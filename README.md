@@ -29,6 +29,7 @@ Coursera DL "Structuring Machine Learning Projects"
 ここでいうと、F1（PrecisionとRecallのHarmonic Mean）。
 
 ※　Precision：猫の写真判定をさせるケースでいうと、猫の写真とAIが判定したもののうち、実際に猫である確率（要は猫と言って、あたった確率）。
+
 ※　Recall：猫の写真判定をさせるケースでいうと、本当の猫の写真のうち、猫と判定できた確率（要は全部の猫のうち、あてられた確率）
 
 →Classifierを10個試したときに、どれを使い続けるのがいいのかは、F1を使って判定する。これにより効率の良いアルゴリズムチェックで後続作業をすることが可能。
@@ -51,3 +52,48 @@ Goodな例： Maximize accuracy subject to running time ≦ 100ms。Accuracy Rat
 AccuracyがOptimizing Metric、
 
 A number of false positives（本当はOK Googleと言っていないのに、AIが勘違いした例） per dayがSatisficing Metric。
+
+
+３．Training/Dev/Testセット
+
+お客様からお預かりしたデータは、教師データの作成（Training）、データの1次チェック（Dev）、データの最終チェック（Test）用に3つにわける。
+500時間以上のデータがあれば、その割合は９０％：５％：５％。データが500時間未満ならば６０％：２０％：２０％。
+
+Dev/Test Setsは同じData Distributionにする必要がある。
+
+例：DevをUS,UK,Other Europe, South America
+
+TestをIndia, China, Other Asia, Australia
+
+の各々からデータセットを作るのはダメ。Dev/Test何れも、すべての国のデータをシャッフルして作成する。
+
+→ Choose a dev set and test set to reflect data you expect to get in the future and consider important to do well on
+
+
+４．結果の評価の仕方
+
+まず、統計学でランダムなテストを行った時の最小エラー確率のことをBayes Optimal Errorという。
+この定義上、Bayes Optimal Errorはbest possible error, no one can surpassである。
+
+Human levelはBayes Error以下の水準となる。
+
+機械学習の精度は、Human Levelより低ければ、処置のしようがある。
+
+例：教師データを集める、人間の精度が高い理由を分析する、MLにBias/Varianceがないか確認するなど
+
+具体例
+
+人間のError、Training Error、Dev Errorが
+（１）各1％、8％、10％の場合
+
+→Trainingを改善する必要あり。
+
+よって、Biasの改善の問題（＝Bigger NN、Better Optimization Algorithms, Training Setの訓練を長時間する、ハイパーパラメーターの調整）
+
+ここで、Human（≒Bayes Error）とTraining Errorの差をAvoidable Biasと呼ぶ。
+
+（２）各7.5％、8％、10％の場合
+
+→　Devを改善する必要あり。Varianceの問題（＝Regularization（L2、Dropout、Data Augmentation）、NN Architectureの変更）
+
+Training ErrorとDev Errorの差は、Variance（不変）
