@@ -1,6 +1,7 @@
 Coursera DL "Structuring Machine Learning Projects"
 
 教師あり学習でシステムを動かす場合の手順
+
 ①Training Setで精度が高い（＝Training Setがコスト関数に良くFitする。）すなわち、一定水準、例えば人間レベルの正確度を確保しているかチェック
 →　上手にいかなかった場合はBigger Network、Better Optimization Algorithms like Adamを試す
 
