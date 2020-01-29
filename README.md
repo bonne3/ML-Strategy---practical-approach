@@ -45,7 +45,7 @@ Coursera DL "Structuring Machine Learning Projects"
 
 　ダメな例： Cost = Accuracy - 0.5 * Running Timeという形で、式にしてしまうこと
 
-　Goodな例： Maximize accuracy subject to running time ≦ 100ms。すなわち、Accuracy RateがOptimizaing Metricで、Running TimeがSatisficing Metric。Running Timeは100ms以下であればOKということ（60msでも80msでも、100msであればOK。60msのAccuracyが80％で、80msのAccuracyが70％なら、Accuracyが高い60ms＋80％を選ぶ、ということ）
+　Goodな例： Maximize accuracy subject to running time ≦ 100ms。すなわち、Accuracy RateがOptimizing Metricで、Running TimeがSatisficing Metric。Running Timeは100ms以下であればOKということ（60msでも80msでも、100ms以下であればOK。80msのAccuracyが80％で、60msのAccuracyが70％なら、Accuracyが高い80ms＋80％を選ぶ、ということ）
 
 　その他の例：Wakewords（OK Google）の場合は以下の通り。AccuracyがOptimizing Metric、A number of false positives（本当はOK Googleと言っていないのに、AIが勘違いした例） per dayがSatisficing Metric。
 
