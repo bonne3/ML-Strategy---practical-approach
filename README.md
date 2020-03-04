@@ -1,4 +1,4 @@
-Coursera DL "Structuring Machine Learning Projects"
+Updated Coursera DL "Structuring Machine Learning Projects"
 
 １．教師あり学習でシステムを動かす場合の手順
 
